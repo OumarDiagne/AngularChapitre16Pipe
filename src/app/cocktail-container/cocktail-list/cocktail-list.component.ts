@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Cocktail } from 'src/app/shared/interfaces/cocktail.interface';
 
 @Component({
@@ -7,15 +7,9 @@ import { Cocktail } from 'src/app/shared/interfaces/cocktail.interface';
   styleUrls: ['./cocktail-list.component.scss'],
 })
 export class CocktailListComponent implements OnInit {
-  @Input() cocktails: Cocktail[] = [];
-  @Input() selectedCocktail!: Cocktail;
-  @Output() private changeCocktail: EventEmitter<number> = new EventEmitter();
-
+  @Input() public cocktails: Cocktail[] | null = null;
+  public search = '';
   constructor() {}
 
   ngOnInit(): void {}
-
-  selectCocktail(index: number) {
-    this.changeCocktail.emit(index);
-  }
 }
